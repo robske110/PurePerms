@@ -105,11 +105,13 @@ class PPListener implements Listener
     public function onPlayerLogin(PlayerLoginEvent $event)
     {
         $player = $event->getPlayer();
+            if($player instanceof Player){
 
-        $this->plugin->registerPlayer($player);
+            $this->plugin->registerPlayer($player);
 
-        if($this->plugin->getNoeulAPI()->isNoeulEnabled())
-            $this->plugin->getNoeulAPI()->deAuth($player);
+            if($this->plugin->getNoeulAPI()->isNoeulEnabled())
+                $this->plugin->getNoeulAPI()->deAuth($player);
+        }
     }
 
     public function onPlayerMove(PlayerMoveEvent $event)
